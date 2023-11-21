@@ -1,0 +1,95 @@
+---
+import TitleSection from "./TitleSection.astro";
+import ItemProyect from "../portfolio/ItemProject.astro";
+import { getTools } from "./server";
+const tools = getTools();
+const projects = [
+  {
+    img: "https://res.cloudinary.com/dwkfj5sxb/image/upload/v1700342478/SCREEN-MY-APPS/tienda-app.webp",
+    description:
+      "Aplicación web para la venta de vegetales al por minoreo a través de listas de productos.",
+    detalle:
+      "Esta aplicación web  a las personas seleccionar sus productos en distintas listas y hacer un pedidos de aquellas, esto brinda al cliente flexibilidad y ahorro de tiempo al comprar productos habituales como las papas que siempre se utiliza en una cocina o productos de una receta para días especiales.",
+    repository: "https://github.com/yelsino/ns-carlos-tienda-v2",
+    liveDemo: "https://yola-satipo.web.app/",
+    tools: [
+      tools.javascript,
+      tools.tailwindcss,
+      tools.nodejs,
+      tools.mongodb,
+      tools.figma,
+      tools.reactjs,
+      tools.socketio,
+    ],
+  },
+  {
+    img: "https://res.cloudinary.com/dwkfj5sxb/image/upload/v1700342569/SCREEN-MY-APPS/admin-screen.webp",
+    description:
+      "Aplicación web para gestionar eficientemente pedidos de una tienda de vegetales y controlar deudas de clientes frecuentes",
+    detalle:
+      "Esta aplicación está construida para el control y gestión de listas de pedidos que se generan a través de una tienda online, además controla los créditos de clientes presenciales del negocio.",
+    repository: "https://github.com/yelsino/ncarlos-admin-v2",
+    liveDemo: "https://admin-ncarlos.web.app/ventas/pedidos",
+    tools: [
+      tools.javascript,
+      tools.tailwindcss,
+      tools.nodejs,
+      tools.mongodb,
+      tools.figma,
+      tools.reactjs,
+      tools.socketio,
+    ],
+  },
+
+  {
+    img: "https://res.cloudinary.com/dwkfj5sxb/image/upload/v1700342565/SCREEN-MY-APPS/idexa-app.webp",
+    description:
+      "Landing page una web para atraer clientes con necesidades de servicios informáticos.",
+    detalle:
+      " Esta landing page fue construida para Idexa Perú  una reciente empresa en el mercado para solucionar distintos problemas informáticos en la localidad de Huancayo principalmente.",
+    repository: "https://github.com/yelsino/portafolio",
+    liveDemo: "https://idexaperu.com/",
+    tools: [tools.javascript, tools.tailwindcss, tools.figma, tools.reactjs],
+  },
+  {
+    img: "https://res.cloudinary.com/dwkfj5sxb/image/upload/v1700342040/SCREEN-MY-APPS/voice-webp.webp",
+    description:
+      "Aplicación web para generar listas con voz e inteligencia artificial.",
+    detalle:
+      "Esta aplicación web diseñada para dispositivos móviles donde puedes crear listas con voz y gernerar vaucher de pago.",
+    repository: "https://github.com/yelsino/list-with-voice",
+    liveDemo: "https://list-with-voice.vercel.app",
+    tools: [
+      tools.typescript,
+      tools.tailwindcss,
+      tools.reactjs,
+      tools.next,
+      tools.openai,
+      tools.chatgpt,
+    ],
+  },
+  {
+    img: "https://res.cloudinary.com/dwkfj5sxb/image/upload/v1700342559/SCREEN-MY-APPS/prestamista-app.webp",
+    description: "Aplicación para gestionar prestamos de dinero a clientes.",
+    detalle:
+      "Facilita la gestión de préstamos y el seguimiento de las operaciones de préstamo entre prestamistas y prestatarios. Cuenta con seguimiento de pagos y vencimientos de préstamos y un modulo de generación de informes financieros.",
+    repository: "",
+    liveDemo: "https://sistema-pretamista.web.app/",
+    tools: [
+      tools.typescript,
+      tools.tailwindcss,
+      tools.reactjs,
+      tools.antdesign,
+      tools.nodejs,
+    ],
+  },
+];
+---
+
+<section id="portfolio" class="scroll-mt-20 mb-10">
+  <TitleSection title="Portafolio" subtitle="mis proyectos" />
+
+  <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-10">
+    {projects.map((project) => <ItemProyect project={project} />)}
+  </div>
+</section>

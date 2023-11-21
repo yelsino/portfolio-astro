@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import NavBar from '../components/blog/NavBar.astro'
+import Footer from "../components/blog/Footer.astro"
+import Articles from "../components/blog/Articles.astro";
+import { getFilters } from "../components/blog/server";
+
+const filters = getFilters();
+---
+
+<Layout>
+  <NavBar  />
+  <div class="px-10 md:px-20 flex flex-col gap-y-10 mt-28">
+    <section>
+      <h1 class="text-center font-kodchasan text-3xl sm:text-4xl font-black">
+        RELAJATE <br/> <span class="text-color_pink1">USA AI</span> A TU FAVOR <br class="hidden md:flex" /> PROGRAMACIÓN INTERACTIVA
+      </h1>
+  
+      <p class="text-center font-mono text-lg md:text-2xl text-gray-600 tracking-tight sm:tracking-normal">
+        Potencia tu creatividad con la sinergia entre la <br class="hidden md:flex" /> inteligencia artificial y la
+        programación <br class="hidden md:flex" /> interactiva
+      </p>
+    </section>
+  
+    <section>
+      <div class="flex gap-x-3 mb-10">
+        {filters.map((filter)=>(
+           <label for={filter.id} class="flex items-center cursor-pointer">
+            <input
+              type="radio"
+              id={filter.id}
+              value={filter.id}
+              name="filters"
+              class="sr-only"
+            />
+            <span
+              class="px-2 py-1 rounded-full border-2 border-color_pink1 hover:bg-color_pink2 hover:border-color_pink1
+                              {selectedOption.id === filter.id
+                    ? 'bg-color_pink2 text-color_pink1 '
+                    : 'bg-white'}"
+            >
+              {filter.name}
+            </span>
+          </label>
+        ))}
+        
+      </div>
+  
+      <Articles />
+    </section>
+  </div>
+
+  <Footer />
+</Layout>

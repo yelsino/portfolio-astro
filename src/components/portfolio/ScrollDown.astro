@@ -1,0 +1,27 @@
+<div class="fixed top-1/2  hidden  rotate-90 self-end text-sm sm:flex items-center justify-center gap-x-2 text-black font-mono">
+  Scroll down
+  <span class="text-lg -rotate-90">
+      <svg
+          width="1em"
+          height="1em"
+          viewBox="0 0 24 24"
+      >
+          <g
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+          >
+              <rect
+                  width="12"
+                  height="18"
+                  x="6"
+                  y="3"
+                  rx="6"
+              ></rect>
+              <path d="M12 7v4"></path>
+          </g>
+      </svg>
+  </span>
+</div>

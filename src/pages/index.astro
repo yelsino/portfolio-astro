@@ -1,0 +1,39 @@
+---
+import AboutMe from "../components/portfolio/AboutMe.astro";
+import Experiences from "../components/portfolio/Experiences.astro";
+import Home from "../components/portfolio/Home.astro";
+import ScrollDown from "../components/portfolio/ScrollDown.astro";
+import Layout from "../layouts/Layout.astro";
+import Tool from '../components/portfolio/Tools.astro'
+import Projects from '../components/portfolio/Projects.astro'
+import NavBar from "../components/portfolio/NavBar.svelte"
+import { Tooltips } from 'astro-tooltips';
+---
+
+<Layout>
+  <Tooltips 
+    interactive={false}
+    delay={[0.5, 10]}
+    placement="top" theme="tomato" 
+    allowHTML={true} 
+
+  />
+  <NavBar />
+  <div class="px-10 sm:px-20 flex flex-col gap-y-10">
+    <Home />
+    <AboutMe />
+		<Experiences />
+    <Tool />
+    <Projects />
+  </div>
+  <ScrollDown />
+  
+</Layout>
+
+
+<style>
+.tippy-box[data-theme~='tomato'] {
+  background-color: tomato;
+  color: yellow;
+}
+</style>

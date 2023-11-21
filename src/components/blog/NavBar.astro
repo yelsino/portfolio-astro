@@ -1,0 +1,18 @@
+---
+import Search from "./Search.svelte";
+
+---
+
+<nav
+	class="w-full fixed max-w-5xl mx-auto py-3 z-30 flex justify-between items-center bg-white font-kodchasan top-0  px-10 sm:px-20"
+>
+	<!-- <div class="flex gap-x-5 items-center"> -->
+		<ul class="font-bold text-lg">
+			<a href="/">Yelsiño</a>
+		</ul>
+
+		<!-- <button on:click={handleModal}  -->
+		<Search client:visible />
+	<!-- </div> -->
+
+</nav>
