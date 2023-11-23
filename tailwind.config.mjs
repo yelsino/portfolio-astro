@@ -11,7 +11,7 @@ export default {
 			fontFamily: {
 				kodchasan: ['Kodchasan', 'sans serif'],
 				poppins: ['Poppins', 'sans serif'],
-				'dm-sans': ['DM Sans', 'sans serif']
+				dmsans : ['DM Sans', 'sans serif']
 			}
 		}
 	},
