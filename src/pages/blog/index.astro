@@ -1,0 +1,40 @@
+---
+import Articles from "@components/blog/Articles.astro";
+import Filters from "@components/blog/Filters.svelte";
+import LayoutBlog from "@layouts/LayoutBlog.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("posts");
+const convertPosts = posts.map((post)=>(post.data))
+---
+
+<LayoutBlog>
+  <section>
+    <h1 class="text-center font-kodchasan text-3xl sm:text-4xl font-black">
+      😋<br />
+      RELAJATE <br />
+      <span class="text-color_pink1">USA AI</span> A TU FAVOR <br
+        class="hidden md:flex"
+      /> PROGRAMACIÓN INTERACTIVA
+    </h1>
+  
+    <p
+      class="text-center font-mono text-lg lg:text-2xl text-gray-600 tracking-tight sm:tracking-normal"
+    >
+      Potencia tu creatividad con la sinergia entre la <br
+        class="hidden md:flex"
+      /> inteligencia artificial y la programación <br class="hidden md:flex" />
+      interactiva
+    </p>
+  </section>
+
+
+  <section class="mb-10">
+    
+    <Filters client:visible />
+    <Articles posts={convertPosts} />
+    
+
+  </section>
+  
+</LayoutBlog>

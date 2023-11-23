@@ -1,0 +1,17 @@
+---
+import Articles from "@components/blog/Articles.astro";
+import LayoutBlog from "@layouts/LayoutBlog.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("posts");
+---
+
+<LayoutBlog>
+  <p class="text-4xl sm:text-6xl font-bold text-rose-400 text-center">🤫UPS!! 404</p>
+  <h1 class="text-2xl font-kodchasan">No encontramos lo que buscabas pero aqui te muestro una lista de artículos que te podrían interesar</h1>
+
+  <div class="mb-10">
+    <Articles posts={posts.map((post)=>(post.data))}/>
+  </div>
+
+</LayoutBlog>

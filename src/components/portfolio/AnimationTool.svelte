@@ -58,7 +58,7 @@
 </script>
 
 
-<div class="flex flex-wrap gap-x-5 gap-y-2 max-w-md mx-14">
+<div class="flex flex-wrap gap-x-5 gap-y-2 max-w-md mx-14  w-full place-content-center">
   <!-- hola -->
   {#each Object.entries(tools) as [key, tool]}
     <div title={tool.text}  class="w-12 h-12 flex justify-center items-center overflow-hidden">
@@ -83,6 +83,7 @@
 
 	.tippy-box[data-theme~='tomato'] {
   background-color: tomato;
+  font-weight: 700;
   color: yellow;
 }
 </style>

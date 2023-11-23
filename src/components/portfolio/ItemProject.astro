@@ -27,11 +27,7 @@ const {project} = Astro.props
 			<p class="text-left pb-2">Desarrollado con</p>
 
 			<div class="flex flex-wrap gap-x-5 gap-y-2">
-				<!-- {#each project.tools as tool}
-					<div use:tooltip={{ content: tool.text, theme: 'tomato'}} class="w-12 h-12 flex justify-center items-center overflow-hidden">
-						<img src={tool.url} alt={tool.alt} class="object-contain  grayscale-opaque" width="91%" />
-					</div>
-				{/each} -->
+				
         {project.tools.map((tool:any)=>(
           <div title={tool.text} class="w-12 h-12 flex justify-center items-center overflow-hidden">
 						<img src={tool.url} alt={tool.alt} class="object-contain  grayscale-opaque" width="91%" />
@@ -76,6 +72,7 @@ const {project} = Astro.props
 
 	.tippy-box[data-theme~='tomato'] {
   background-color: tomato;
+	font-weight: 700;
   color: yellow;
 }
 </style>

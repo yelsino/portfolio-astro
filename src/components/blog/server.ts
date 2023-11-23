@@ -1,21 +1,28 @@
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+	apiKey: import.meta.env.PUBLIC_OPENAI_API_KEY,
+	dangerouslyAllowBrowser: true
+});
+
 export const getFilters = () => {
   return  [
 		{
-			name: 'muestra todo',
+			name: 'Todos los articulos',
 			id: '1'
 		},
-		{
-			name: 'solo AI',
-			id: '2'
-		},
-		{
-			name: 'programación',
-			id: '3'
-		},
-		{
-			name: 'cuida la vista',
-			id: '4'
-		}
+		// {
+		// 	name: 'solo AI',
+		// 	id: '2'
+		// },
+		// {
+		// 	name: 'programación',
+		// 	id: '3'
+		// },
+		// {
+		// 	name: 'cuida la vista',
+		// 	id: '4'
+		// }
 	];
 }
 
@@ -166,4 +173,22 @@ export const getArticles = () => {
 			id: '30'
 		}
 	];
+}
+
+
+export async function generateMarkdown(topic:string) {
+	const completion = await openai.chat.completions.create({
+    messages: [
+			{ role: "system", content: "eres un experto creador de blog con markdown, tu tarea es hablar sobre el tema indicado por el usuario y crear un markdown" },
+      {
+        role: "user",
+        content: topic
+      }
+		],
+    model: "gpt-3.5-turbo",
+		// max_tokens: 500,
+  });
+
+	console.log("OPEN AI: ", completion.choices[0]);
+	
 }
