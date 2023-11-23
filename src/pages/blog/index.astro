@@ -1,40 +1,47 @@
 ---
 import Articles from "@components/blog/Articles.astro";
 import Filters from "@components/blog/Filters.svelte";
-import LayoutBlog from "@layouts/LayoutBlog.astro";
+import Footer from "@components/blog/Footer.astro";
+import NavBar from "@components/blog/NavBar.astro";
+import Layout from "@layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("posts");
-const convertPosts = posts.map((post)=>(post.data))
+const convertPosts = posts.map((post) => post.data);
 ---
 
-<LayoutBlog>
-  <section>
-    <h1 class="text-center font-kodchasan text-3xl sm:text-4xl font-black">
-      😋<br />
-      RELAJATE <br />
-      <span class="text-color_pink1">USA AI</span> A TU FAVOR <br
-        class="hidden md:flex"
-      /> PROGRAMACIÓN INTERACTIVA
-    </h1>
-  
-    <p
-      class="text-center font-mono text-lg lg:text-2xl text-gray-600 tracking-tight sm:tracking-normal"
-    >
-      Potencia tu creatividad con la sinergia entre la <br
-        class="hidden md:flex"
-      /> inteligencia artificial y la programación <br class="hidden md:flex" />
-      interactiva
-    </p>
-  </section>
 
+<Layout 
+  icono="/blogger.svg"
+  title="yelsino: blog" 
+  description="Descubre el mundo de la inteligencia artificial y la programación web en un solo lugar. Aprende a integrar herramientas de OpenAI API para potenciar tus proyectos. Artículos detallados sobre IA, desarrollo web y cómo fusionar ambos campos. ¡Explora tutoriales, consejos y guías para maximizar tus habilidades en inteligencia artificial y programación en nuestro blog!">
+  <NavBar />
+  <div class="px-10 md:px-20 flex flex-col gap-y-10 mt-24">
+    <section>
+      <h1 class="text-center font-kodchasan text-3xl sm:text-4xl font-black">
+        😋<br />
+         RELAJATE <br />
+        <span class="text-color_pink1">USA AI</span> A TU FAVOR <br
+          class="hidden md:flex"
+        /> PROGRAMACIÓN INTERACTIVA
+      </h1>
 
-  <section class="mb-10">
-    
-    <Filters client:visible />
-    <Articles posts={convertPosts} />
-    
+      <p
+        class="text-center font-mono text-lg lg:text-2xl text-gray-600 tracking-tight sm:tracking-normal"
+      >
+        Potencia tu creatividad con la sinergia entre la <br
+          class="hidden md:flex"
+        /> inteligencia artificial y la programación <br
+          class="hidden md:flex"
+        />
+         interactiva
+      </p>
+    </section>
 
-  </section>
-  
-</LayoutBlog>
+    <section class="mb-10">
+      <Filters client:visible />
+      <Articles posts={convertPosts} />
+    </section>
+  </div>
+  <Footer />
+</Layout>

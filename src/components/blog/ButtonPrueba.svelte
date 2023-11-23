@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import { generateMarkdown } from "./server";
 
   const handleClick = async() => {
@@ -8,4 +8,4 @@
   }
 </script>
 
-<button id="print" on:click={handleClick}>PRINT</button>
+<button id="print" on:click={handleClick}>PRINT</button> -->

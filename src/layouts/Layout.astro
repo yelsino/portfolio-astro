@@ -1,23 +1,64 @@
 ---
 import { ViewTransitions } from "astro:transitions";
+import { SEO } from "astro-seo";
 
+interface Props {
+  title: string;
+	icono?: string;
+  description: string;
+  extend?: {
+    link: [{ rel: string; href: string }];
+    meta?: [{ name: string; content: string }];
+  };
+  openGraph?: {
+    basic: {
+      title: string;
+      type: string;
+      image: string;
+      url: string;
+    };
+    optional?: {
+      audio?: string;
+      description?: string;
+      determiner?: string;
+      locale?: string;
+      localeAlternate?: Array<string>;
+      siteName?: string;
+      video?: string;
+    };
+  };
+}
+
+const { title, description, extend, openGraph, icono } = Astro.props;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/maletin.png" />
-		<meta name="viewport" content="width=device-width" />
-		<!-- <meta name="generator" content={Astro.generator} /> -->
-		<meta name="description" content="Desarrollador de software web en Perú. Ofrezco soluciones tecnológicas innovadoras para empresas y proyectos. ¿Necesitas mejorar tu presencia en línea o impulsar tu empresa a través de la tecnología? Contáctame para colaborar en el desarrollo de sitios web personalizados o aplicaciones web.">
-		<link href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Kodchasan:wght@300;400&family=Poppins:wght@600;700;900&display=swap" rel="stylesheet">
-		
-		<title>Yelsino: Portafolio</title>
-		<ViewTransitions />
-	</head>
-	<body>
-		<main class="selection:bg-fuchsia-200 selection:text-black max-w-5xl mx-auto relative flex flex-col  ">
-			<slot />
-		</main>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={icono}/>
+    <meta name="viewport" content="width=device-width" />
+    <!-- <meta name="generator" content={Astro.generator} /> -->
+   
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans&family=Kodchasan:wght@300;400&family=Poppins:wght@600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- <title>{title}</title> -->
+    <SEO
+      title={title}
+      description={description}
+      openGraph={openGraph}
+      extend={extend}
+    />
+    <ViewTransitions />
+  </head>
+  <body>
+	
+    <main
+      class="selection:bg-fuchsia-200 selection:text-black max-w-5xl mx-auto relative flex flex-col"
+    >
+      <slot />
+    </main>
+  </body>
 </html>

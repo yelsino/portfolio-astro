@@ -1,10 +1,12 @@
 ---
 // @ts-ignore
 import { getCollection, CollectionEntry } from "astro:content";
-import LayoutBlog from "../../layouts/LayoutBlog.astro";
 import Articles from "../../components/blog/Articles.astro";
 import Fuse from "fuse.js";
 import { dateFormat } from "../../lib/formats";
+import Layout from "@layouts/Layout.astro";
+import NavBar from "@components/blog/NavBar.astro";
+import Footer from "@components/blog/Footer.astro";
 
 
 const posts = await getCollection("posts");
@@ -25,7 +27,7 @@ type Props = {
 }
 
 export async function getStaticPaths() {
-  // const posts: any = await Astro.glob("../../components/blog/posts/*.md");
+  
   const posts = await getCollection("posts");
 
   return posts.map((post) => {
@@ -41,34 +43,34 @@ export async function getStaticPaths() {
 }
 
 const {post} = Astro.props;
-
-
 const {Content} = await post.render();
 let postFilter = fuse.search(post.data.title).map((post)=>post.item);
 
-
-
 ---
 
-<LayoutBlog>
-  <section  class="content_md border-b pb-8">
-    <div class="flex justify-between">
-      <p class="text-sm text-gray-500">{dateFormat(post.data.date) }</p>
-      <a href="/blog" class="flex text-xl items-center">
-        🥱
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 14l-4 -4l4 -4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" /></svg>
-      </a>
+<Layout title={post.data.title} description={post.data.description}>
+  <NavBar />
+  <div class="px-10 md:px-20 flex flex-col gap-y-10 mt-24">
+    <section  class="content_md border-b pb-8">
+      <div class="flex justify-between">
+        <p class="text-sm text-gray-500">{dateFormat(post.data.date) }</p>
+        <a href="/blog" class="flex text-xl items-center">
+          🥱
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-back-up" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 14l-4 -4l4 -4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" /></svg>
+        </a>
+      </div>
+      <Content />
+    </section>
+  
+    
+    <div class=" mb-10">
+      <p class="text-gray-400 font-bold text-3xl mb-3">Te puede interesar 😉</p>
+      <Articles posts={postFilter}/>
     </div>
-    <Content />
-  </section>
-
-  
-  <div class=" mb-10">
-    <p class="text-gray-400 font-bold text-3xl mb-3">Te puede interesar 😉</p>
-    <Articles posts={postFilter}/>
   </div>
-  
-</LayoutBlog>
+  <Footer />
+</Layout>
+
 
 <style is:inline>
   .content_md {

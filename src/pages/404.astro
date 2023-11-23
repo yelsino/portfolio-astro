@@ -1,17 +1,27 @@
 ---
 import Articles from "@components/blog/Articles.astro";
-import LayoutBlog from "@layouts/LayoutBlog.astro";
+import Footer from "@components/blog/Footer.astro";
+import NavBar from "@components/blog/NavBar.astro";
+import Layout from "@layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("posts");
 ---
 
-<LayoutBlog>
-  <p class="text-4xl sm:text-6xl font-bold text-rose-400 text-center">🤫UPS!! 404</p>
-  <h1 class="text-2xl font-kodchasan">No encontramos lo que buscabas pero aqui te muestro una lista de artículos que te podrían interesar</h1>
 
-  <div class="mb-10">
-    <Articles posts={posts.map((post)=>(post.data))}/>
+
+<Layout 
+  icono="/blogger.svg"
+  title="yelsino: blog" 
+  description="Descubre el mundo de la inteligencia artificial y la programación web en un solo lugar. Aprende a integrar herramientas de OpenAI API para potenciar tus proyectos. Artículos detallados sobre IA, desarrollo web y cómo fusionar ambos campos. ¡Explora tutoriales, consejos y guías para maximizar tus habilidades en inteligencia artificial y programación en nuestro blog!">
+  <NavBar />
+  <div class="px-10 md:px-20 flex flex-col gap-y-10 mt-24">
+    <p class="text-4xl sm:text-6xl font-bold text-rose-400 text-center">🤫UPS!! 404</p>
+    <h1 class="text-2xl font-kodchasan">No encontramos lo que buscabas pero aqui te muestro una lista de artículos que te podrían interesar</h1>
+  
+    <div class="mb-10">
+      <Articles posts={posts.map((post)=>(post.data))}/>
+    </div>
   </div>
-
-</LayoutBlog>
+  <Footer />
+</Layout>

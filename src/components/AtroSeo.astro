@@ -1,0 +1,35 @@
+---
+import { SEO } from "astro-seo";
+
+interface Props {
+  title: string;
+  description: string;
+  extend?: {link: [{rel: string, href: string}], meta: [{name: string, content: string}]};
+  openGraph?: {
+    basic: {
+      title: string;
+      type: string;
+      image: string;
+      url: string;
+    };
+    optional?: {
+      audio?: string;
+      description?: string;
+      determiner?: string;
+      locale?: string;
+      localeAlternate?: Array<string>;
+      siteName?: string;
+      video?: string;
+    };
+  };
+}
+
+const {title,description,extend,openGraph} = Astro.props
+---
+
+<SEO
+  title={title}
+  description={description}
+  openGraph={openGraph}
+  extend={extend}
+/>
