@@ -8,7 +8,7 @@
 export const getFilters = () => {
   return  [
 		{
-			name: 'Todos los articulos',
+			name: 'Todos los artículos',
 			id: '1'
 		},
 		// {

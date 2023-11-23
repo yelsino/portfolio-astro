@@ -84,7 +84,7 @@ const handleModal = () => (showModal = !showModal);
         bind:value={query} 
         on:input={handleOnSearch}
         class=" w-full p-1 outline-none text-color_pink1 selection:text-color_pink1"
-        placeholder="Buscar articulos"
+        placeholder="Buscar artículos"
       />
       <button   class="bg-color_pink2 rounded-md text-xs p-1 font-semibold text-color_pink1 flex items-center justify-center">ESC</button>
   </search>
