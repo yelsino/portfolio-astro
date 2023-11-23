@@ -1,9 +1,9 @@
-import OpenAI from "openai";
+// import OpenAI from "openai";
 
-const openai = new OpenAI({
-	apiKey: import.meta.env.PUBLIC_OPENAI_API_KEY,
-	dangerouslyAllowBrowser: true
-});
+// const openai = new OpenAI({
+// 	apiKey: import.meta.env.PUBLIC_OPENAI_API_KEY,
+// 	dangerouslyAllowBrowser: true
+// });
 
 export const getFilters = () => {
   return  [
@@ -176,19 +176,19 @@ export const getArticles = () => {
 }
 
 
-export async function generateMarkdown(topic:string) {
-	const completion = await openai.chat.completions.create({
-    messages: [
-			{ role: "system", content: "eres un experto creador de blog con markdown, tu tarea es hablar sobre el tema indicado por el usuario y crear un markdown" },
-      {
-        role: "user",
-        content: topic
-      }
-		],
-    model: "gpt-3.5-turbo",
-		// max_tokens: 500,
-  });
+// export async function generateMarkdown(topic:string) {
+// 	const completion = await openai.chat.completions.create({
+//     messages: [
+// 			{ role: "system", content: "eres un experto creador de blog con markdown, tu tarea es hablar sobre el tema indicado por el usuario y crear un markdown" },
+//       {
+//         role: "user",
+//         content: topic
+//       }
+// 		],
+//     model: "gpt-3.5-turbo",
+// 		// max_tokens: 500,
+//   });
 
-	console.log("OPEN AI: ", completion.choices[0]);
+// 	console.log("OPEN AI: ", completion.choices[0]);
 	
-}
+// }
